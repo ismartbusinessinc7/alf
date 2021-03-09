@@ -1,0 +1,58 @@
+<MyTile@SmartTileWithLabel>
+    size_hint_y: None
+    height: "240dp"
+
+<HomeScreen>:
+    ScrollView:
+
+        MDGridLayout:
+            cols: 1
+            adaptive_height: True
+            padding: dp(4), dp(4)
+            spacing: dp(4)
+
+            MyTile:
+                source: "alflogo.jpeg"
+                text: "Call Us @ +91 990 276 6876"
+
+            # MDLabel:
+            #     text: "Our Services"
+            #     halign: "center"
+            #     theme_text_color: "Custom"
+            #     text_color: 1, 0, 0, 1
+
+            MDList:
+                id: scroll
+
+                TwoLineAvatarListItem:
+                    text: "Laundry"
+                    secondary_text: "Our expert services"
+
+                    ImageLeftWidget:
+                        source: "alflogo.jpeg"
+
+                TwoLineAvatarListItem:
+                    text: "Ironing"
+                    secondary_text: "Our expert services"
+
+                    ImageLeftWidget:
+                        source: "alflogo.jpeg"
+
+                TwoLineAvatarListItem:
+                    text: "Dry Cleaning"
+                    secondary_text: "Our expert services"
+
+                    ImageLeftWidget:
+                        source: "alflogo.jpeg"
+
+    MDFillRoundFlatIconButton:
+        icon: "room-service"
+        md_bg_color: 0, 1, 0, 1
+        text: "New Service Request"
+        font_size: 15
+        text_size: self.size
+        pos_hint: {"center_x": .5, "center_y": .1}
+        padding_y: 19
+        on_release:
+            app.change_screen("addservicescreen")
+

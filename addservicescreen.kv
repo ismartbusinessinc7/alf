@@ -1,0 +1,115 @@
+<WhiteLabel@MDLabel>
+    size_hint_y: None
+    size_hint_x: .5
+    height: self.texture_size[1]
+    theme_text_color: "Custom"
+    text_color: 1, 1, 1, 1
+    pos_hint: {"center_x": .5}
+<FieldRound@MDTextFieldRound>
+    normal_color: 0, .1, 0, .5
+    icon_left_color: 1, 1, 1, 1
+    size_hint_x: None
+    width: 220
+    pos_hint: {"center_x": .5}
+    color_active: [1, 1, 1, 1]
+<AddServiceScreen>:
+    MDFloatLayout:
+
+        Image:
+            source: "alflogo.jpeg"
+            size_hint: .3, .2
+            pos_hint: {"top":1 , "right": 0.6}
+
+        MDLabel:
+            text: "New Service Request"
+            pos_hint: {"center_x": .725, "center_y": .77}
+            font_style: "H6"
+
+        MDTextField:
+            id: client_name
+            hint_text: "Client Name *"
+            size_hint_x: .8
+            pos_hint: {"center_x": .5, "center_y": .67}
+            current_hint_text_color: 0, 0, 0, 1
+            color_mode: "custom"
+            line_color_focus: 1, 0, 0, 1
+
+        MDTextField:
+            id: client_phone
+            hint_text: "Client Phone *"
+            size_hint_x: .8
+            pos_hint: {"center_x": .5, "center_y": .57}
+            current_hint_text_color: 0, 0, 0, 1
+            color_mode: "custom"
+            line_color_focus: 1, 0, 0, 1
+        MDTextButton:
+            id: client_services
+            text: "Select Service Type *"
+            # helper_text: "Service Type"
+            # helper_text_mode: "persistent"
+            # size_hint_x: .8
+            pos_hint: {"center_x": .3, "center_y": .47}
+            # current_hint_text_color: 0, 0, 0, 1
+            # color_mode: "custom"
+            # line_color_focus: 1, 0, 0, 1
+            # on_focus:
+            on_release:
+                root.create_service()
+        MDTextField:
+            id: client_desc
+            multiline: True
+            hint_text: "Address & Description *"
+            size_hint_x: .8
+            pos_hint: {"center_x": .5, "center_y": .37}
+            current_hint_text_color: 0, 0, 0, 1
+            color_mode: "custom"
+            line_color_focus: 1, 0, 0, 1
+        MDTextButton:
+            id: client_date
+            pos_hint: {"center_x": .27, "center_y": .27}
+            text: "Select Service Date"
+            custom_color: 1, 0, 0, 1
+            on_press:
+                root.select_date()
+
+        MDTextButton:
+            id: client_slot
+            text: "Available Slots"
+            pos_hint: {"center_x": .7, "center_y": .27}
+            custom_color: 1, 0, 0, 1
+            on_press:
+                root.available_slots()
+            # set_slot_item
+            # size_hint_x: .8
+            # width: "20dp"
+
+            # current_hint_text_color: 0, 0, 0, 1
+            # color_mode: "custom"
+            # line_color_focus: 1, 0, 0, 1
+
+
+        # MDTextButton:
+        #     id: client_time
+        #     pos_hint: {"center_x": .27, "center_y": .17}
+        #     text: "Select Service Time"
+        #     custom_color: 1, 0, 0, 1
+        #     on_press:
+        #         root.select_time()
+
+        MDRaisedButton:
+            text: "Submit"
+            id: submit
+            font_size: 15
+            pos_hint: {"center_x": .3, "center_y": .10}
+            md_bg_color: 0, 1, 0, 1
+            on_release:
+                root.add_service()
+
+        MDRaisedButton:
+            text: "Cancel"
+            id: cancel
+            font_size: 15
+            pos_hint: {"center_x": .6, "center_y": .10}
+            md_bg_color: 0, 1, 0, 1
+            on_release:
+                app.change_screen("home_screen")
